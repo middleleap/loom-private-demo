@@ -11,7 +11,7 @@ export function gateway({ root, password = () => process.env.DEMO_PASSWORD, host
  const base = realpathSync(root), sessions = new Map();
  let prior, failures = 0, windowEnd = 0;
  return createServer(async (req,res) => {
-  const headers = {'Cache-Control':'no-store','X-Robots-Tag':'noindex, nofollow, noarchive','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'",'Strict-Transport-Security':'max-age=31536000'};
+  const headers = {'Cache-Control':'no-store','X-Robots-Tag':'noindex, nofollow, noarchive','X-Content-Type-Options':'nosniff','Referrer-Policy':'same-origin','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'",'Strict-Transport-Security':'max-age=31536000'};
   const send = (code,body='',extra={}) => {res.writeHead(code,{...headers,...extra});res.end(req.method==='HEAD'?'':body);};
   const clear = '__Host-loom=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0';
   try {
