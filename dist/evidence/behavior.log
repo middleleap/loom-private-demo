@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: MT-OPS-01a: resolution requires an assigned operator and leaves original intact on refusal
+ok 1 - MT-OPS-01a: resolution requires an assigned operator and leaves original intact on refusal
+  ---
+  duration_ms: 1.2835
+  type: 'test'
+  ...
+# Subtest: MT-OPS-01b: blank or short reasons cannot close an assigned case
+ok 2 - MT-OPS-01b: blank or short reasons cannot close an assigned case
+  ---
+  duration_ms: 0.766417
+  type: 'test'
+  ...
+# Subtest: MT-OPS-01c: assignment and resolution preserve actor, reason and chronology
+ok 3 - MT-OPS-01c: assignment and resolution preserve actor, reason and chronology
+  ---
+  duration_ms: 0.525417
+  type: 'test'
+  ...
+# Subtest: MT-OPS-01c: missing, altered and backdated history is detected
+ok 4 - MT-OPS-01c: missing, altered and backdated history is detected
+  ---
+  duration_ms: 0.28825
+  type: 'test'
+  ...
+# Subtest: MT-OPS-01d: observer and unknown identities cannot mutate cases
+ok 5 - MT-OPS-01d: observer and unknown identities cannot mutate cases
+  ---
+  duration_ms: 0.378791
+  type: 'test'
+  ...
+# Subtest: resolved cases, unknown cases and unsupported actions are refused
+ok 6 - resolved cases, unknown cases and unsupported actions are refused
+  ---
+  duration_ms: 0.243334
+  type: 'test'
+  ...
+# Subtest: MT-OPS-01: persisted reasons obey the same 1000-character limit as transitions
+ok 7 - MT-OPS-01: persisted reasons obey the same 1000-character limit as transitions
+  ---
+  duration_ms: 0.772125
+  type: 'test'
+  ...
+# Subtest: MT-OPS-01: persisted history cannot precede the source event timeline
+ok 8 - MT-OPS-01: persisted history cannot precede the source event timeline
+  ---
+  duration_ms: 0.706042
+  type: 'test'
+  ...
+# Subtest: MT-OPS-01: valid boundary reason and source timestamp remain accepted
+ok 9 - MT-OPS-01: valid boundary reason and source timestamp remain accepted
+  ---
+  duration_ms: 0.427583
+  type: 'test'
+  ...
+# Subtest: MT-OPS-01 review: absent or invalid source timelines refuse mutation
+ok 10 - MT-OPS-01 review: absent or invalid source timelines refuse mutation
+  ---
+  duration_ms: 1.13875
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 55.440417

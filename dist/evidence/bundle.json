@@ -1,0 +1,262 @@
+{
+  "version": "c51a15edef29f2d922e29643577d743796a7ab1cbea6a6de6faf827a7ddd479b",
+  "cases": [
+    {
+      "id": "EX-1042",
+      "title": "Request arrived after consent withdrawal",
+      "partner": "Harbour Finance · fictional",
+      "consent": "CNS-0081",
+      "priority": "High",
+      "status": "open",
+      "assigned_to": null,
+      "reason": null,
+      "history": [],
+      "mismatch": "The consent ledger records a withdrawal at 09:12. The request feed shows an account-data request at 09:14. Investigate the ordering and record the outcome.",
+      "events": [
+        {
+          "at": "2026-09-13T09:00:00Z",
+          "source": "Consent ledger",
+          "text": "Consent recorded as active"
+        },
+        {
+          "at": "2026-09-13T09:12:00Z",
+          "source": "Consent ledger",
+          "text": "Withdrawal recorded"
+        },
+        {
+          "at": "2026-09-13T09:14:00Z",
+          "source": "Request feed",
+          "text": "Account-data request observed"
+        }
+      ],
+      "suggested_reason": "Confirmed delayed event ordering in the synthetic feed; reconciliation recorded."
+    },
+    {
+      "id": "EX-1043",
+      "title": "Requested scope differs from consent",
+      "partner": "Cedar Money · fictional",
+      "consent": "CNS-0096",
+      "priority": "Medium",
+      "status": "open",
+      "assigned_to": null,
+      "reason": null,
+      "history": [],
+      "mismatch": "The synthetic request names transactions; the consent snapshot names balances only. Compare the two sources before closing the case.",
+      "events": [
+        {
+          "at": "2026-09-13T10:02:00Z",
+          "source": "Consent ledger",
+          "text": "Balances-only scope recorded"
+        },
+        {
+          "at": "2026-09-13T10:03:00Z",
+          "source": "Request feed",
+          "text": "Transactions scope observed"
+        }
+      ],
+      "suggested_reason": "Confirmed scope discrepancy in fixture data; referred for source correction."
+    },
+    {
+      "id": "EX-1044",
+      "title": "Consent missing from the local snapshot",
+      "partner": "Palm Ledger · fictional",
+      "consent": "CNS-0113",
+      "priority": "Medium",
+      "status": "open",
+      "assigned_to": null,
+      "reason": null,
+      "history": [],
+      "mismatch": "The request feed refers to a consent not present in the synthetic local snapshot. Determine whether the snapshot is incomplete.",
+      "events": [
+        {
+          "at": "2026-09-13T10:10:00Z",
+          "source": "Snapshot import",
+          "text": "Local consent snapshot loaded"
+        },
+        {
+          "at": "2026-09-13T10:11:00Z",
+          "source": "Request feed",
+          "text": "Unknown consent reference observed"
+        }
+      ],
+      "suggested_reason": "Confirmed incomplete synthetic snapshot; case passed to the import owner."
+    }
+  ],
+  "context": {
+    "id": "MT-OPS-01",
+    "change_id": "CHG-DEMO-001",
+    "authority": "synthetic",
+    "institution": "Meridian Trust",
+    "source": "Fictional Operations Handbook, section 4.2",
+    "requirement": "Every resolved exception must have an assigned operator, a meaningful resolution reason and a chronological record of who changed what.",
+    "decision_owner": "Operations lead — fictional role",
+    "approval": "Not approved. Demonstration context only.",
+    "rules": [
+      {
+        "id": "MT-OPS-01a",
+        "text": "Assign the case before resolving it."
+      },
+      {
+        "id": "MT-OPS-01b",
+        "text": "Record a resolution reason of at least 12 characters."
+      },
+      {
+        "id": "MT-OPS-01c",
+        "text": "Keep the assignment and resolution in an attributable chronological history."
+      },
+      {
+        "id": "MT-OPS-01d",
+        "text": "An observer may inspect cases, but cannot change them."
+      }
+    ],
+    "scope": "Resolves a synthetic operations case. Does not change consent or authorize an account-data request."
+  },
+  "report": {
+    "schema": "loom.customer-demo-report/v1",
+    "scenario": {
+      "schema": "loom.customer-demo/v1",
+      "id": "meridian-consent-exceptions",
+      "change_id": "CHG-DEMO-001",
+      "requirement_id": "MT-OPS-01",
+      "institution": "Meridian Trust",
+      "title": "Close the case. Keep the story.",
+      "authority": "synthetic",
+      "steps": [
+        {
+          "id": "behavior",
+          "title": "The operations workflow works",
+          "expected_exit": 0,
+          "execution": "live",
+          "authority": "synthetic"
+        },
+        {
+          "id": "missing-history",
+          "title": "A missing case history is caught",
+          "expected_exit": 1,
+          "execution": "live",
+          "authority": "synthetic"
+        },
+        {
+          "id": "agent-approval",
+          "title": "An agent cannot hold approval authority",
+          "expected_exit": 1,
+          "execution": "live",
+          "authority": "synthetic"
+        },
+        {
+          "id": "restored-registry",
+          "title": "The corrected role separation passes",
+          "expected_exit": 0,
+          "execution": "live",
+          "authority": "synthetic"
+        }
+      ],
+      "human_review": "pending",
+      "platform_activation": "not-demonstrated",
+      "agent_delivery": "not-qualified"
+    },
+    "source_commit": "36ea325e3db363f8130e638675b96184f95cf2f0",
+    "source_digest": "c51a15edef29f2d922e29643577d743796a7ab1cbea6a6de6faf827a7ddd479b",
+    "authority": "synthetic",
+    "human_review": "pending",
+    "platform_activation": "not-demonstrated",
+    "agent_delivery": "not-qualified",
+    "status": "verified",
+    "findings": [],
+    "steps": [
+      {
+        "id": "behavior",
+        "title": "The operations workflow works",
+        "ok": true,
+        "expected_exit": 0,
+        "exit_code": 0,
+        "log": "behavior.log",
+        "receipt": "behavior.json"
+      },
+      {
+        "id": "missing-history",
+        "title": "A missing case history is caught",
+        "ok": true,
+        "expected_exit": 1,
+        "exit_code": 1,
+        "log": "missing-history.log",
+        "receipt": "missing-history.json"
+      },
+      {
+        "id": "agent-approval",
+        "title": "An agent cannot hold approval authority",
+        "ok": true,
+        "expected_exit": 1,
+        "exit_code": 1,
+        "log": "agent-approval.log",
+        "receipt": "agent-approval.json"
+      },
+      {
+        "id": "restored-registry",
+        "title": "The corrected role separation passes",
+        "ok": true,
+        "expected_exit": 0,
+        "exit_code": 0,
+        "log": "restored-registry.log",
+        "receipt": "restored-registry.json"
+      }
+    ],
+    "run_id": "run-0236592d-7367-4e81-b074-7daa761d505c",
+    "completed_at": "2026-09-14T04:48:17.470Z"
+  },
+  "repair": {
+    "runtime": "Claude Code 2.1.266",
+    "models": [
+      "claude-opus-5[1m]",
+      "claude-opus-5[1m]"
+    ],
+    "sequence": [
+      "Baseline: 7 pass, 2 fail",
+      "First repair: 9 pass",
+      "AI review: missing source timeline regression found",
+      "Corrected repair: 10 pass on independent execution"
+    ],
+    "qualification": "not-qualified"
+  },
+  "reuse": {
+    "authority": "synthetic",
+    "release_digest": "sha256:229b58a17cdfb58f7585e816c93a1613d1cb0e3ee3daa24f30e789d8dfc6047d",
+    "teams": [
+      {
+        "team": "team-one",
+        "queue": "Consent exceptions",
+        "copied_files": 8,
+        "repeat_copied": 0,
+        "preserved": true,
+        "behavior": "passed"
+      },
+      {
+        "team": "team-two",
+        "queue": "Service requests",
+        "copied_files": 8,
+        "repeat_copied": 0,
+        "preserved": true,
+        "behavior": "passed"
+      }
+    ],
+    "scope": "Prepared synthetic application, not an agent build. Local copy and behavior evidence only; no real approvals, identity federation, production activation or productivity claim."
+  },
+  "provenance": {
+    "execution_date": "2026-09-14T04:48:17.470Z",
+    "source_commit": "36ea325e3db363f8130e638675b96184f95cf2f0",
+    "source_digest": "c51a15edef29f2d922e29643577d743796a7ab1cbea6a6de6faf827a7ddd479b",
+    "original_artifact_hashes": {
+      "behavior.log": "21ad1ad4c8cb483f7701e47f9f70f22f1b725058152a8bace7b9e2e42e8ba24f",
+      "missing-history.log": "4b533e98962bd29a6ba4d0165e261eb3b96f8d891ae037b80a58c8f50c2a6e55",
+      "agent-approval.log": "20687ad616f0ff1da24e1cad27f3f7c0756cbe07551c2454a9dee7c5b0f041c3",
+      "restored-registry.log": "c1a69177c5ecf9359fc59189bb7355a1f083e4e3b2297ead44a164e291194ea7",
+      "source/fixtures/context.json": "906cc74cd2b4aa141c451387e953d5854976261b1bcea69e1bff73932475d01f",
+      "source/app/domain.test.mjs": "c0a181fcdb24f8acb2a1add5121fe04163f57535cc53ee240b6cb262d175f21e",
+      "source/implementation.patch": "1dfceacaf55c20632d9dd71b0c398a5c261b23e5601b1f784adbea5e876abda0",
+      "source/loom/identity-registry-check.mjs": "02e64071abfdd5a619f2248aa5a8f6c6ebab8ce93db5fd878cd3dec7d494c66a",
+      "repair.patch": "80b87c054ea30acf50d972d42e44a2e4b8abc05cd5b04907a6b670a6e63ad2a1",
+      "repair-tests.log": "3b31d7393d4fd9308941fae812e72c66f54b33b3570ea6ccfeee9bb02e7dbf07"
+    },
+    "excerpt_notice": "Sanitized excerpts: local paths removed. Local hashes are not independent signatures."
+  }
+}

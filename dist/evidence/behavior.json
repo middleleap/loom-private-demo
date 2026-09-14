@@ -1,0 +1,11 @@
+{
+  "id": "behavior",
+  "exit_code": 0,
+  "expected_exit": 0,
+  "reason_matched": true,
+  "execution": "recorded",
+  "authority": "synthetic",
+  "node": "v22.23.2",
+  "run_id": "run-0236592d-7367-4e81-b074-7daa761d505c",
+  "source_digest": "c51a15edef29f2d922e29643577d743796a7ab1cbea6a6de6faf827a7ddd479b"
+}

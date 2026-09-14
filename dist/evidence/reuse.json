@@ -1,0 +1,23 @@
+{
+  "authority": "synthetic",
+  "release_digest": "sha256:229b58a17cdfb58f7585e816c93a1613d1cb0e3ee3daa24f30e789d8dfc6047d",
+  "teams": [
+    {
+      "team": "team-one",
+      "queue": "Consent exceptions",
+      "copied_files": 8,
+      "repeat_copied": 0,
+      "preserved": true,
+      "behavior": "passed"
+    },
+    {
+      "team": "team-two",
+      "queue": "Service requests",
+      "copied_files": 8,
+      "repeat_copied": 0,
+      "preserved": true,
+      "behavior": "passed"
+    }
+  ],
+  "scope": "Prepared synthetic application, not an agent build. Local copy and behavior evidence only; no real approvals, identity federation, production activation or productivity claim."
+}

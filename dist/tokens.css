@@ -1,0 +1,149 @@
+/* ============================================================
+   MiddleLeap — design tokens
+   Source of truth: the live implementation at middleleap.com
+   (captured 2026-08-31). Every value below is what production
+   actually serves; do not hand-edit one copy in isolation.
+
+   Two surfaces, one token set:
+     Ink   — dark-first. Web and app UI. The default :root block.
+     Paper — light. Decks, PDFs, documents, print. Opt in with
+             <html data-theme="light">, which REMAPS --ink-* to
+             --paper-* and --bone-* to --paper-text-*.
+
+   Because of that remap you author ONCE against --ink-* / --bone-*
+   and both surfaces work. Never hardcode a bone hex on Paper —
+   use --bone-1 and let the theme resolve it.
+   ============================================================ */
+
+:root {
+  /* --- Ink surface (dark) ------------------------------------ */
+  --ink-0: #080808;          /* page */
+  --ink-1: #101010;          /* raised */
+  --ink-2: #181817;          /* card */
+  --ink-3: #232321;          /* hover / input */
+  --ink-4: #33322f;          /* pressed / divider strong */
+  --ink-border: #1e1e1c;
+
+  /* --- Bone (text on Ink) ------------------------------------ */
+  --bone-0: #ece9e1;         /* headline */
+  --bone-1: #dedbd4;         /* body */
+  --bone-2: #a8a59e;         /* secondary */
+  --bone-3: #87847d;         /* caption */
+  --bone-4: #4a4945;         /* disabled */
+
+  /* --- Paper surface (light) --------------------------------- */
+  --paper-0: #f7f5ef;        /* page — warm, never pure white */
+  --paper-1: #f0ede5;        /* raised */
+  --paper-2: #e8e4db;        /* card */
+  --paper-3: #ded8cc;        /* hover */
+  --paper-4: #bdb6aa;        /* pressed */
+  --paper-border: #d4cec2;
+
+  /* --- Text on Paper ----------------------------------------- */
+  --paper-text-0: #1b1b1b;   /* headline */
+  --paper-text-1: #2b2925;   /* body */
+  --paper-text-2: #4d4942;   /* secondary */
+  --paper-text-3: #5f5b54;   /* caption */
+  --paper-text-4: #a09a90;   /* disabled */
+
+  /* --- Ember (the one accent) -------------------------------- */
+  --ember-300: #f58f55;
+  --ember-400: #f0722e;
+  --ember-500: #e65c2d;      /* CTA fill */
+  --ember-600: #ce451b;
+  --ember-700: #a83614;
+  --ember-800: #8a2c0e;
+  --ember-dim: #e65c2d24;
+  --ember-grad: linear-gradient(135deg, #f0722e 0%, #ce451b 100%); /* THE MARK ONLY */
+  --on-ember: #110d0a;       /* text on an ember fill */
+  --ember-text: var(--ember-400);       /* accent text, theme-aware */
+  --ember-on-inverse: var(--ember-700);
+
+  /* --- Status (never borrows ember) -------------------------- */
+  --positive: #5fa671;   --positive-dim: #5fa67124;
+  --caution:  #d9a03c;   --caution-dim:  #d9a03c24;
+  --info:     #5d8fa6;   --info-dim:     #5d8fa624;
+  --critical: #d64545;   --critical-dim: #d6454524;  /* FILLS ONLY */
+  /* Status TEXT is theme-aware — the base fills are far too light to read on
+     Paper (positive 2.68:1, caution 2.13:1, info 3.24:1 on --paper-0).
+     Use the -text aliases for type; use the base tokens for fills and icons. */
+  --positive-text: var(--positive);
+  --caution-text:  var(--caution);
+  --info-text:     var(--info);
+  --critical-text: #e06060;  /* red text on Ink — #d64545 fails AA on a card */
+  --danger-btn-bg: #b83434;  /* live serves #c43b3b — only 4.29:1 under the
+                                bone-0 label, and buttons set 12px mono, so AA
+                                Large does not apply. #b83434 = 4.84:1. */
+
+  /* --- Type -------------------------------------------------- */
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-body:    "DM Sans", Arial, sans-serif;
+  --font-mono:    "JetBrains Mono", monospace;
+
+  --fs-hero: clamp(44px, 6vw, 76px);
+  --fs-h1: 42px;  --fs-h2: 30px;  --fs-h3: 22px;
+  --fs-body: 16px; --fs-small: 14px; --fs-caption: 12.5px;
+  --fs-ui: 12px;  --fs-ui-small: 11px; --fs-ui-micro: 10px;
+  --lh-tight: 1.08; --lh-head: 1.2; --lh-body: 1.6;
+
+  /* --- Space (4px base) -------------------------------------- */
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px; --s-5: 24px;
+  --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px;
+
+  /* --- Radius ------------------------------------------------ */
+  --r-ui: 0;        /* buttons, inputs, cards, tables, modals */
+  --r-chip: 2px;    /* chips and badges only */
+  --r-mark: 16%;    /* pivot glyphs ONLY — logo, checkbox, toggle, loader */
+  --r-pill: 999px;
+
+  /* --- Motion: one move, the pivot --------------------------- */
+  --dur-fast: .12s; --dur-base: .2s; --dur-leap: .4s;
+  --ease-leap: cubic-bezier(.34, 1.3, .4, 1);
+  --ease-out:  cubic-bezier(.2, 0, 0, 1);
+
+  /* --- Interaction surfaces ----------------------------------
+     Added by the conformance pass: nothing in the live set met
+     WCAG 1.4.11 (3:1) for a field boundary or a Paper focus ring.
+     See DESIGN.md > Conformance findings. ------------------------ */
+  --field-border: var(--bone-3);     /* 5.37:1 on page, 4.76:1 on card */
+  --focus-ring:   var(--ember-500);  /* 5.66:1 on Ink page */
+
+  /* --- Elevation --------------------------------------------- */
+  --shadow-1: 0 1px 2px #00000080;
+  --shadow-2: 0 4px 16px #00000073;
+  --shadow-ember: 0 4px 24px #e65c2d47;
+}
+
+/* Paper surface: remap, don't redefine. */
+:root[data-theme="light"] {
+  --ink-0: var(--paper-0);
+  --ink-1: var(--paper-1);
+  --ink-2: var(--paper-2);
+  --ink-3: var(--paper-3);
+  --ink-4: var(--paper-4);
+  --ink-border: var(--paper-border);
+
+  --bone-0: var(--paper-text-0);
+  --bone-1: var(--paper-text-1);
+  --bone-2: var(--paper-text-2);
+  --bone-3: var(--paper-text-3);
+  --bone-4: var(--paper-text-4);
+
+  --ember-text: var(--ember-700);        /* #a83614 — AA on paper */
+  --positive-text: #2f7048;              /* 5.45:1 page, 4.69:1 card */
+  --caution-text:  #7d5a11;              /* 5.76:1 page, 4.95:1 card */
+  --info-text:     #35637a;              /* 5.99:1 page, 5.14:1 card */
+  --critical-text: #b23434;              /* 5.61:1 page, 4.82:1 card */
+  --ember-on-inverse: var(--ember-400);
+
+  --field-border: #7c776f;               /* 4.08:1 on page, 3.50:1 on card */
+  --focus-ring:   var(--ember-600);      /* ember-500 is only 2.79:1 on a Paper card */
+
+  --shadow-1: 0 1px 2px #1b1b1b1f;
+  --shadow-2: 0 8px 30px #1b1b1b1f;
+  --shadow-ember: 0 4px 24px #e65c2d33;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-fast: .01ms; --dur-base: .01ms; --dur-leap: .01ms; }
+}

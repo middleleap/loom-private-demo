@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" /><meta name="robots" content="noindex,nofollow,noarchive" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>The Loom — a change you can trace</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="/fonts/fonts.css" />
+    <link rel="stylesheet" href="/tokens.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <script type="module" src="/view.mjs"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to demonstration</a>
+    <header class="masthead">
+      <a href="/" class="brand" aria-label="MiddleLeap home"
+        ><span class="pivot" aria-hidden="true"><i></i><i></i></span
+        ><span>Middle<b>Leap</b></span></a
+      ><span class="mast-title">THE LOOM / CUSTOMER DEMONSTRATION</span
+      ><span class="tag">FICTIONAL INSTITUTION</span>
+    </header>
+    <main id="main"><p id="storage-notice" role="status"></p><form method="post" action="/logout"><button class="text-button">End private session</button></form>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">01 / FROM INTENT TO EVIDENCE</p>
+          <h1>Close the case.<br />Keep <em>the story.</em></h1>
+          <p class="lede">
+            A working operations queue. An institutional rule. A change you can
+            trace all the way back.
+          </p>
+        </div>
+        <aside class="hero-note">
+          <span class="mini">THE QUESTION</span>
+          <p>
+            “Can our teams build with AI<br />and still account for the result?”
+          </p>
+          <span class="mini">MERIDIAN TRUST · SYNTHETIC SCENARIO</span>
+        </aside>
+      </section>
+      <nav class="chapters" aria-label="Demo chapters"><button class="chapter active" data-panel="work"><span>01</span> Working result</button><button class="chapter " data-panel="context"><span>02</span> Institutional rule</button><button class="chapter " data-panel="repair"><span>03</span> Recorded repair</button><button class="chapter " data-panel="checks"><span>04</span> Checks & evidence</button><button class="chapter " data-panel="reuse"><span>05</span> Second team</button><button class="chapter " data-panel="pilot"><span>06</span> Pilot</button></nav>
+      <p id="global-error" class="error" role="alert" hidden></p>
+      <section id="work" class="panel" aria-labelledby="work-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">THE WORKING RESULT</p>
+            <h2 id="work-title">
+              An exception becomes <em>an explained outcome.</em>
+            </h2>
+          </div>
+          <p class="section-note">
+            Explore the case, assign it, and record why it can close. Every
+            action stays in its history.
+          </p>
+        </div>
+        <div class="app-shell">
+          <div class="app-top">
+            <div class="bank">
+              <span class="bank-glyph" aria-hidden="true">M</span>
+              <div>
+                <strong>Meridian Trust</strong
+                ><span>OPEN FINANCE OPERATIONS</span>
+              </div>
+            </div>
+            <div class="persona">
+              <label for="persona">Demo persona</label
+              ><select id="persona">
+                <option value="demo-operator">Operations officer</option>
+                <option value="demo-observer">Read-only observer</option>
+              </select>
+            </div>
+          </div>
+          <div class="app-summary">
+            <div>
+              <span class="mini">EXCEPTION QUEUE</span>
+              <h3>Attention, with a clear next step.</h3>
+            </div>
+            <div class="queue-count">
+              <strong id="open-count">—</strong><span>cases to resolve</span>
+            </div>
+          </div>
+          <div class="workspace">
+            <aside class="queue">
+              <div class="queue-heading">
+                <span class="mini">CASES</span
+                ><label class="sr" for="filter">Filter cases</label
+                ><select id="filter">
+                  <option value="all">All cases</option>
+                  <option value="open">Unresolved</option>
+                  <option value="resolved">Resolved</option>
+                </select>
+              </div>
+              <div id="cases"></div>
+            </aside>
+            <article
+              id="case-detail"
+              class="case-detail"
+              aria-label="Selected exception"
+            ></article>
+          </div>
+          <div class="app-foot">
+            <span
+              >Interactive browser session · synthetic data · no bank connection</span
+            ><button id="reset-open" class="text-button">
+              Restart the scenario ↗
+            </button>
+          </div>
+        </div>
+        <div class="takeaway">
+          <span class="eyebrow">WHAT CHANGED</span>
+          <p>
+            A case can close only when its
+            <strong>owner, reason and history</strong> agree.
+          </p>
+          <button class="text-button" data-go="context">
+            See the rule behind it →
+          </button>
+        </div>
+      </section>
+      <section
+        id="context"
+        class="panel"
+        hidden
+        aria-labelledby="context-title"
+      >
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">INSTITUTIONAL CONTEXT</p>
+            <h2 id="context-title">
+              The institution’s rules.<br /><em>Visible in the work.</em>
+            </h2>
+          </div>
+          <p class="section-note">
+            One fictional source becomes an explicit requirement, observable
+            behavior, and a test.
+          </p>
+        </div>
+        <div class="context-grid">
+          <article class="source-paper">
+            <span class="mini">MERIDIAN TRUST / OPERATIONS HANDBOOK</span>
+            <div class="paper-rule"></div>
+            <h3>4.2 · Closing an exception</h3>
+            <blockquote id="requirement"></blockquote>
+            <p>MT-OPS-01 · Fictional source for this demonstration</p>
+            <a
+              href="/evidence/source/fixtures/context.json"
+              target="_blank"
+              rel="noopener"
+              >Inspect the source record ↗</a
+            >
+          </article>
+          <div>
+            <div id="rules" class="rules"></div>
+            <div class="boundary">
+              <span class="mini">HUMAN DECISION · STILL PENDING</span>
+              <p>
+                The operations lead would review and accept this requirement and
+                the resulting change. No institutional approval is created by
+                this demonstration.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="takeaway">
+          <span class="eyebrow">THE CONNECTION</span>
+          <p>
+            Context is useful when you can point to
+            <strong>what it changed.</strong>
+          </p>
+          <button class="text-button" data-go="checks">Run the checks →</button>
+        </div>
+      </section>
+      <section id="checks" class="panel" hidden aria-labelledby="checks-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">RECORDED EXECUTION</p>
+            <h2 id="checks-title">
+              A check earns its place<br />when it <em>catches something.</em>
+            </h2>
+          </div>
+          <p class="section-note">
+            Inspect four actual recorded checks. Two refused deliberately invalid synthetic inputs. No checks or models run on this host.
+          </p>
+        </div>
+        <div class="run-bar">
+          <div>
+            <strong id="run-status">No run recorded</strong>
+            <p id="run-subtitle">
+              The app tests and Loom gate run against synthetic inputs.
+            </p>
+          </div>
+          <button id="run" class="primary">Explore recorded checks</button>
+        </div>
+        <div id="steps" class="step-list"></div>
+        <div class="boundary">
+          <span class="mini">WHAT A PASS MEANS HERE</span>
+          <p>
+            The checks behaved as expected on these inputs. They do not approve
+            the change, authenticate the fictional people, or prove platform
+            enforcement. Correcting the role fixture is a simulated resolution.
+          </p>
+        </div>
+        <div class="takeaway">
+          <span class="eyebrow">THE RESULT</span>
+          <p>
+            The refusal and its reason become
+            <strong>inspectable evidence.</strong>
+          </p>
+          <button class="text-button" data-go="evidence">
+            Open the evidence →
+          </button>
+        </div>
+      </section>
+      <section
+        id="evidence"
+        class="panel"
+        hidden
+        aria-labelledby="evidence-title"
+      >
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">ONE CHANGE / CONNECTED RECORDS</p>
+            <h2 id="evidence-title">
+              Follow the thread.<br /><em>Challenge the result.</em>
+            </h2>
+          </div>
+          <p class="section-note">
+            Open the source, implementation and raw execution records. Missing
+            evidence remains visible.
+          </p>
+        </div>
+        <div class="evidence-grid">
+          <div class="thread">
+            <a
+              href="/evidence/source/fixtures/context.json"
+              target="_blank"
+              rel="noopener"
+              ><span>01 / REQUIREMENT</span
+              ><strong>Why the case needs an explanation</strong
+              ><small>MT-OPS-01 · fictional context ↗</small></a
+            ><a
+              href="/evidence/source/implementation.patch"
+              target="_blank"
+              rel="noopener"
+              ><span>02 / IMPLEMENTATION</span
+              ><strong>Assignment, resolution and case history</strong
+              ><small
+                >Actual implementation diff from the base commit ↗</small
+              ></a
+            ><a
+              href="/evidence/source/app/domain.test.mjs"
+              target="_blank"
+              rel="noopener"
+              ><span>03 / ACCEPTANCE TESTS</span
+              ><strong>What the behavior must satisfy</strong
+              ><small>Requirement-linked checks ↗</small></a
+            ><a
+              href="/evidence/source/loom/identity-registry-check.mjs"
+              target="_blank"
+              rel="noopener"
+              ><span>04 / LOOM CONTROL</span
+              ><strong>Agents cannot hold approver roles</strong
+              ><small>Existing Loom identity-registry gate ↗</small></a
+            >
+          </div>
+          <aside class="evidence-aside">
+            <span class="mini">THIS WORKSPACE</span>
+            <dl id="provenance"></dl>
+            <div id="receipt-links"></div>
+            <p class="fine">
+              Local hashes identify these bytes and detect changed records. They
+              are not independent signatures or an external audit trail.
+            </p>
+            <a
+              class="text-button"
+              href="/evidence/bundle.json"
+              target="_blank"
+              rel="noopener"
+              >Open the full run report ↗</a
+            >
+          </aside>
+        </div>
+        <div class="boundary">
+          <span class="mini">THE HONEST BOUNDARY</span>
+          <p>
+            This increment demonstrates a working app and deterministic checks.
+            The companion sections cover the recorded repair and two-team reuse. Full qualification, actual human review and independent external evidence remain open.
+          </p>
+        </div>
+      </section>
+      <section id="repair" class="panel" hidden><div class="section-head"><div><p class="eyebrow">PRIVATE SYNTHETIC DEMONSTRATION</p><h2>A repair that survived <em>review.</em></h2></div></div><p>The original app was built in Codex. Two recorded Claude sessions repaired a bounded history defect; AI review caught a regression between them.</p><ol><li>Baseline: 7 pass, 2 fail</li><li>First repair: 9 pass</li><li>AI review: missing source timeline regression found</li><li>Corrected repair: 10 pass on independent execution</li></ol><p>Runtime: Claude Code 2.1.266. Model: claude-opus-5[1m]. This is recorded work, not a live model call or human approval.</p><p><a href="/evidence/repair.patch">Inspect the actual repair diff ↗</a> · <a href="/evidence/repair-tests.log">Read independently rerun tests ↗</a></p></section><section id="reuse" class="panel" hidden><div class="section-head"><div><p class="eyebrow">PRIVATE SYNTHETIC DEMONSTRATION</p><h2>Two teams. <em>One context.</em></h2></div></div><p>Prepared synthetic teams inherited the same eight context/profile files. Team CI, project configuration, identities and applications stayed intact.</p><div class="rules"><div><h3>Consent exceptions</h3><p>8 inherited files · 0 copied on repeat</p><p>Team settings preserved · case-note behavior tests passed</p></div><div><h3>Service requests</h3><p>8 inherited files · 0 copied on repeat</p><p>Team settings preserved · case-note behavior tests passed</p></div></div><p>Both use inherited Customer/Case terminology; corrections append facts while preserving the original note. This is scripted reuse, not a customer onboarding study.</p><a href="/evidence/reuse.json">Inspect reuse record ↗</a></section><section id="pilot" class="panel" hidden><div class="section-head"><div><p class="eyebrow">PRIVATE SYNTHETIC DEMONSTRATION</p><h2>Start with <em>one useful change.</em></h2></div></div><p>Proposed four-week evaluation in an agreed non-production environment.</p><ol><li>Agree a workflow, approved context and acceptance criteria.</li><li>Deliver a bounded change with recorded checks and review.</li><li>Exercise refusal/recovery and second-team reuse.</li><li>Assess results and hand over evidence and operating instructions.</li></ol><p>The customer supplies a sponsor, workflow owner, reviewer and environment owner. Price, staffing and start date are unconfirmed. No production deployment or regulatory assurance is included.</p><p>Next conversation: choose the workflow and the people who would assess it.</p></section><footer>
+        <span>MiddleLeap / The Loom</span
+        ><span>CHG-DEMO-001 · Synthetic demonstration · authority: none</span>
+      </footer>
+    </main>
+    <dialog id="reset-dialog">
+      <h2>Restart this scenario?</h2>
+      <p>
+        Your browser case queue returns to its initial state. Your practice history is cleared; recorded execution evidence is unchanged.
+      </p>
+      <div class="dialog-actions">
+        <button id="reset-cancel">Keep working</button
+        ><button id="reset-confirm" class="primary">Restart scenario</button>
+      </div>
+    </dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

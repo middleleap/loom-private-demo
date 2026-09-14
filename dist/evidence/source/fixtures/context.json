@@ -1,0 +1,26 @@
+{
+  "id": "MT-OPS-01",
+  "change_id": "CHG-DEMO-001",
+  "authority": "synthetic",
+  "institution": "Meridian Trust",
+  "source": "Fictional Operations Handbook, section 4.2",
+  "requirement": "Every resolved exception must have an assigned operator, a meaningful resolution reason and a chronological record of who changed what.",
+  "decision_owner": "Operations lead — fictional role",
+  "approval": "Not approved. Demonstration context only.",
+  "rules": [
+    { "id": "MT-OPS-01a", "text": "Assign the case before resolving it." },
+    {
+      "id": "MT-OPS-01b",
+      "text": "Record a resolution reason of at least 12 characters."
+    },
+    {
+      "id": "MT-OPS-01c",
+      "text": "Keep the assignment and resolution in an attributable chronological history."
+    },
+    {
+      "id": "MT-OPS-01d",
+      "text": "An observer may inspect cases, but cannot change them."
+    }
+  ],
+  "scope": "Resolves a synthetic operations case. Does not change consent or authorize an account-data request."
+}

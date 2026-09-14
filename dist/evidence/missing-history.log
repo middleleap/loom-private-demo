@@ -1,0 +1,90 @@
+{
+  "probe": "missing-history",
+  "mutation": "Removed EX-1042 history after resolution",
+  "cases": [
+    {
+      "id": "EX-1042",
+      "title": "Request arrived after consent withdrawal",
+      "partner": "Harbour Finance · fictional",
+      "consent": "CNS-0081",
+      "priority": "High",
+      "status": "resolved",
+      "assigned_to": "demo-operator",
+      "reason": "Confirmed delayed event ordering.",
+      "history": [],
+      "mismatch": "The consent ledger records a withdrawal at 09:12. The request feed shows an account-data request at 09:14. Investigate the ordering and record the outcome.",
+      "events": [
+        {
+          "at": "2026-09-13T09:00:00Z",
+          "source": "Consent ledger",
+          "text": "Consent recorded as active"
+        },
+        {
+          "at": "2026-09-13T09:12:00Z",
+          "source": "Consent ledger",
+          "text": "Withdrawal recorded"
+        },
+        {
+          "at": "2026-09-13T09:14:00Z",
+          "source": "Request feed",
+          "text": "Account-data request observed"
+        }
+      ],
+      "suggested_reason": "Confirmed delayed event ordering in the synthetic feed; reconciliation recorded."
+    },
+    {
+      "id": "EX-1043",
+      "title": "Requested scope differs from consent",
+      "partner": "Cedar Money · fictional",
+      "consent": "CNS-0096",
+      "priority": "Medium",
+      "status": "open",
+      "assigned_to": null,
+      "reason": null,
+      "history": [],
+      "mismatch": "The synthetic request names transactions; the consent snapshot names balances only. Compare the two sources before closing the case.",
+      "events": [
+        {
+          "at": "2026-09-13T10:02:00Z",
+          "source": "Consent ledger",
+          "text": "Balances-only scope recorded"
+        },
+        {
+          "at": "2026-09-13T10:03:00Z",
+          "source": "Request feed",
+          "text": "Transactions scope observed"
+        }
+      ],
+      "suggested_reason": "Confirmed scope discrepancy in fixture data; referred for source correction."
+    },
+    {
+      "id": "EX-1044",
+      "title": "Consent missing from the local snapshot",
+      "partner": "Palm Ledger · fictional",
+      "consent": "CNS-0113",
+      "priority": "Medium",
+      "status": "open",
+      "assigned_to": null,
+      "reason": null,
+      "history": [],
+      "mismatch": "The request feed refers to a consent not present in the synthetic local snapshot. Determine whether the snapshot is incomplete.",
+      "events": [
+        {
+          "at": "2026-09-13T10:10:00Z",
+          "source": "Snapshot import",
+          "text": "Local consent snapshot loaded"
+        },
+        {
+          "at": "2026-09-13T10:11:00Z",
+          "source": "Request feed",
+          "text": "Unknown consent reference observed"
+        }
+      ],
+      "suggested_reason": "Confirmed incomplete synthetic snapshot; case passed to the import owner."
+    }
+  ],
+  "findings": [
+    "EX-1042: history does not explain the current state",
+    "EX-1042: resolution reason is missing, out of bounds or disagrees with history"
+  ]
+}

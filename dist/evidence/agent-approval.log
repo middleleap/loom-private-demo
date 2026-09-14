@@ -1,0 +1,7 @@
+
+Identity-registry gate — FAIL
+
+  - demo-runner: an agent identity holds approver roles (risk-second-line) — agents build, they never approve
+
+Approvals resolve against the registry: agents never approve, and second line is
+disjoint from builders. See governance/identities.template.json.

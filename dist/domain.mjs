@@ -1,0 +1,124 @@
+// Synthetic case management only. Persona selection is not authentication.
+
+// MT-OPS-01b and MT-OPS-01c are defined once here so a persisted case cannot
+// hold a reason or a timestamp that a transition write would have refused.
+const REASON_MIN = 12;
+const REASON_MAX = 1000;
+
+function reasonOutOfBounds(reason) {
+  return (
+    typeof reason !== "string" ||
+    reason.trim().length < REASON_MIN ||
+    reason.length > REASON_MAX
+  );
+}
+
+// The source event timeline is the floor for the first history entry: history
+// explains the events, so it cannot predate them. A timeline that is absent,
+// empty or malformed offers no floor, so it returns null and is reported as a
+// finding — it never relaxes the chronology check to accept anything.
+function sourceTimelineEnd(c) {
+  const time = Date.parse(
+    (Array.isArray(c.events) ? c.events.at(-1)?.at : undefined) ?? "",
+  );
+  return Number.isFinite(time) ? time : null;
+}
+
+export function validateHistory(cases) {
+  const findings = [];
+  if (!Array.isArray(cases) || !cases.length)
+    return ["Missing case collection"];
+  const ids = new Set();
+  for (const c of cases) {
+    const fail = (message) => findings.push(`${c.id}: ${message}`);
+    if (ids.has(c.id)) fail("duplicate case");
+    ids.add(c.id);
+    if (!["open", "assigned", "resolved"].includes(c.status))
+      fail("unknown status");
+    if (!Array.isArray(c.history)) {
+      fail("missing history");
+      continue;
+    }
+    const expected = c.status === "open" ? 0 : c.status === "assigned" ? 1 : 2;
+    if (c.history.length !== expected)
+      fail("history does not explain the current state");
+    const timelineEnd = sourceTimelineEnd(c);
+    if (timelineEnd === null)
+      fail("source event timeline is missing or malformed");
+    // The finding above already refuses the case; seeding the loop with the
+    // open floor keeps the remaining entries checked against each other
+    // without repeating the same defect once per history entry.
+    let last = timelineEnd ?? -Infinity;
+    for (const [i, event] of c.history.entries()) {
+      const time = Date.parse(event.at);
+      if (!Number.isFinite(time) || time < last)
+        fail("history is not chronological");
+      last = time;
+      if (event.actor !== "demo-operator")
+        fail("history actor is not the demo operator");
+      if (event.action !== (i === 0 ? "assign" : "resolve"))
+        fail("history action is out of order");
+    }
+    if (c.status === "open" && (c.assigned_to !== null || c.reason !== null))
+      fail("open case has assignment or resolution");
+    if (c.status !== "open" && c.assigned_to !== "demo-operator")
+      fail("missing assigned operator");
+    if (c.status === "assigned" && c.reason !== null)
+      fail("assigned case has a resolution");
+    if (
+      c.status === "resolved" &&
+      (reasonOutOfBounds(c.reason) || c.history[1]?.reason !== c.reason)
+    )
+      fail(
+        "resolution reason is missing, out of bounds or disagrees with history",
+      );
+  }
+  return findings;
+}
+
+export function transition(
+  cases,
+  { id, action, actor, reason, at = new Date().toISOString() },
+) {
+  if (actor !== "demo-operator")
+    throw new Error(
+      "Only the simulated operator can change cases. Choose the operator persona.",
+    );
+  if (!["assign", "resolve"].includes(action))
+    throw new Error("Unsupported action. Use assign or resolve.");
+  const result = structuredClone(cases);
+  const c = result.find((c) => c.id === id);
+  if (!c) throw new Error("Unknown case. Select a case from the queue.");
+  if (c.status === "resolved")
+    throw new Error("This case is already resolved. Choose an open case.");
+  if (validateHistory(cases).length)
+    throw new Error(
+      "Case history is invalid. Restore the demo workspace before continuing.",
+    );
+  const time = Date.parse(at);
+  const previous = c.history.at(-1)?.at;
+  const floor =
+    previous === undefined ? sourceTimelineEnd(c) : Date.parse(previous);
+  if (!Number.isFinite(time) || !Number.isFinite(floor) || time < floor)
+    throw new Error("Use a chronological timestamp after the previous event.");
+  if (action === "assign") {
+    if (c.status !== "open")
+      throw new Error(
+        "This case is already assigned. Record its resolution next.",
+      );
+    c.status = "assigned";
+    c.assigned_to = actor;
+    c.history.push({ action, actor, at });
+  } else {
+    if (c.status !== "assigned")
+      throw new Error("Assign the case before resolving it.");
+    if (reasonOutOfBounds(reason))
+      throw new Error(
+        "Use a resolution reason between 12 and 1,000 characters.",
+      );
+    c.status = "resolved";
+    c.reason = reason.trim();
+    c.history.push({ action, actor, at, reason: c.reason });
+  }
+  return result;
+}
