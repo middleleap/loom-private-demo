@@ -16,7 +16,7 @@ export function gateway({ root, password = () => process.env.DEMO_PASSWORD, host
   const clear = '__Host-loom=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0';
   try {
    const secret = password();
-   if (!secret || Buffer.byteLength(secret)<16) return send(503,'Private demo is not configured.');
+   if (!secret || Buffer.byteLength(secret)<8) return send(503,'Private demo is not configured.');
    const fingerprint = digest(secret).toString('hex');
    if(prior!==fingerprint){sessions.clear();prior=fingerprint;}
    const host = req.headers.host;
