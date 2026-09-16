@@ -1,0 +1,7 @@
+{
+  "schema": "loom.private-demo-regeneration/v1",
+  "base_package_commit": "4bc45935080add5a21ae24a900d676aecbfbbd71",
+  "scenario": "private-source/open-finance-illustration.json",
+  "generator": "scripts/customer-demo-illustration.mjs",
+  "generated_files": ["dist/illustration.html", "dist/illustration.css", "dist/index.html", "dist/release.json"]
+}
