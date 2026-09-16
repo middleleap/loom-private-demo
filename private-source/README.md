@@ -1,6 +1,6 @@
 # Private Open Finance planning illustration
 
-This source stays in the private repository and outside the served `dist/` root. It is an authored Meridian Trust PFM/payment-initiation story, not executed evidence. The existing operations queue and recorded repair/check/reuse records are a separate scenario.
+This source stays outside the served `dist/` root (the gateway returns 404 for it); the repository itself is public and the story is fictional. It is an authored Meridian Trust PFM/payment-initiation story, not executed evidence. The existing operations queue and recorded repair/check/reuse records are a separate scenario.
 
 Generated using `scripts/customer-demo-illustration.mjs` from ai-dlc commit `314ae8e` (source PR https://github.com/middleleap/ai-dlc/pull/73). Base deployment package: private-demo commit `4bc45935080add5a21ae24a900d676aecbfbbd71`.
 

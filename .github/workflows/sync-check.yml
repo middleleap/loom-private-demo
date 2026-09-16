@@ -1,0 +1,21 @@
+name: sync with ai-dlc
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 6 * * *'   # daily: does ai-dlc main still generate this package?
+jobs:
+  sync-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/checkout@v4
+        with: { repository: middleleap/ai-dlc, ref: main, path: ai-dlc }
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+      - run: node --test scripts/
+      - run: node scripts/sync-check.mjs --ai-dlc ai-dlc
+      - name: dry-run regeneration (what --apply would change)
+        if: always()
+        run: node scripts/regenerate.mjs --ai-dlc ai-dlc
