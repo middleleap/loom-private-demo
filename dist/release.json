@@ -2,13 +2,15 @@
   "source_commit": "36ea325e3db363f8130e638675b96184f95cf2f0",
   "source_digest": "c51a15edef29f2d922e29643577d743796a7ab1cbea6a6de6faf827a7ddd479b",
   "execution_date": "2026-09-14T04:48:17.470Z",
-  "package_digest": "34f76e4d620411672d7cabe4967b59065d1aea0dc0382afbe9fe1af6a49d4de5",
+  "package_digest": "eb102eabc432581e460055322a8f4824e92617a3fd7f5638e52eb5a8a1a43d54",
   "scope": "Private synthetic sales demo",
   "base_package_digest": "7f10512073ce16c13d8cb0784624c87b5daacaf9f586ae4e05fdb6368117437b",
   "illustration": {
     "authority": "fictional-editorial",
     "scenario_sha256": "4d1e3f6189385de18b076d2fba4d6e894357d6de0f6243a86841b5e0798aec7f",
-    "generator_sha256": "3d5be58f5c28e7b0683eafff6dd618be5a690aa8a9912f815b0e6a9e2107d4b0",
-    "recorded_evidence_unchanged": true
+    "generator_sha256": "2ff0cdff83eb2fd7f263da4c2f5f3706cdd1fc3d0eaf8e6d017220987f019885",
+    "recorded_evidence_unchanged": true,
+    "ai_dlc_commit": "25be82e3d8215c016122529ee57b841441209524",
+    "regenerated_at": "2026-09-16T14:39:03.712Z"
   }
 }
